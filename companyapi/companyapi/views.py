@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 
 def home_page(request):
     print("Home page requested")
-    return HttpResponse("This is Home Page")
+    list_friends = ["Usama","Bilal","Faizan","Shammas"]
+    return JsonResponse(list_friends,safe=False)
