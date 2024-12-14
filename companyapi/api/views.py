@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
-from api.models import Company
-from api.serializers import CompanySerializer
+from api.models import Company,Employee
+from api.serializers import CompanySerializer,EmployeeSerializer
 
 # Create your views here.
 
@@ -10,6 +10,12 @@ class CompanyViewSet(viewsets.ModelViewSet):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
     permission_classes = [AllowAny]
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset=Employee.objects.all()
+    serializer_class = EmployeeSerializer
+    permission_classes = [AllowAny]
+
 
 
     
