@@ -10,6 +10,10 @@ class Company(models.Model):
     active = models.BooleanField(default=True)
 
 
+    def __str__(self):
+        return self.name +'--'+ self.location
+
+
 # Employee Models    
 class Employee(models.Model):
     name=models.CharField(max_length=100)
