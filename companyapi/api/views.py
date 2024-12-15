@@ -23,8 +23,8 @@ class CompanyViewSet(viewsets.ModelViewSet):
             return Response(emps_serializers.data)
         except Exception as e:
             print(e)
-            return ResourceWarning({
-                'message':e
+            return Response({
+                'message': 'Company might not exist'
             })
             
 
