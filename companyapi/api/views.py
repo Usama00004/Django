@@ -16,11 +16,17 @@ class CompanyViewSet(viewsets.ModelViewSet):
     #companies/{comoanyID}/employee
     @action(detail=True,methods=['get'])
     def employees(self,request,pk=None):
-        company = Company.objects.get(pk=pk)
-        emps = Employee.objects.filter(company = company)
-        emps_serializers = EmployeeSerializer(emps,many=True,context={'request': request})
-        return Response(emps_serializers.data)
-       
+        try:
+            company = Company.objects.get(pk=pk)
+            emps = Employee.objects.filter(company = company)
+            emps_serializers = EmployeeSerializer(emps,many=True,context={'request': request})
+            return Response(emps_serializers.data)
+        except Exception as e:
+            print(e)
+            return ResourceWarning({
+                'message':e
+            })
+            
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset=Employee.objects.all()
